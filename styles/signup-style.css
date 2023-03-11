@@ -1,0 +1,14 @@
+body {
+    padding: 0px 20px 0px 20px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #D5EDF7;
+    margin        : 0;
+    padding       : 0;
+    display       : grid;
+    place-content : center;
+    min-height    : 100vh;
+}
+
+h2 {
+    color: #839095;
+}
