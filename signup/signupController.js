@@ -1,6 +1,11 @@
 import { createUser } from "./signupService.js";
-import { isEmailValid } from "../utils/validator.js";
+import { validateEmail } from "../utils/validator.js";
+import { pubSub } from "../pubSub.js";
 
+/**
+ * Handles logic for creating new users.
+ * @param {*} signupElement a html node with sign up data embedded.
+ */
 export function signupController(signupElement) {
 
     signupElement.addEventListener('submit', async (event) => {
@@ -9,24 +14,41 @@ export function signupController(signupElement) {
         const emailElement = signupElement.querySelector('#username');
         const passwordElement = signupElement.querySelector('#password');
         const passwordConfirmationElement = signupElement.querySelector('#passwordConfirmation');
+        const submitButton = signupElement.querySelector('#submitButton');
 
         const email = emailElement.value;
         const password = passwordElement.value;
         const passwordConfirmation = passwordConfirmationElement.value;
 
         if (isEmailValid(email) && isPasswordValid(password, passwordConfirmation)) {
-
+            submitButton.disabled = true;
             try {
                 await createUser(email, password);
                 signupElement.reset();
+                alert(`✅ Usuario ${email} ha sido creado`);
                 window.location = '/';
             } catch (error) {
-                console.log(error);
+                pubSub.publish(pubSub.TOPICS.SHOW_NOTIFICATION, `❌ ${error.message}`);
+            } finally {
+                submitButton.disabled = false;
             }
-        }
+        } 
 
     })
+}
 
+/**
+ * Validates wheter give email 
+ * @param {String} email 
+ * @returns true if email is well formatted, otherwise false.
+ */
+function isEmailValid(email) {
+
+    if (validateEmail(email)) {
+        return true;
+    }
+    pubSub.publish(pubSub.TOPICS.SHOW_NOTIFICATION, '⚠️ El email ingresado no corresponde a un email');
+    return false;
 }
 
 /**
@@ -41,6 +63,6 @@ function isPasswordValid(password, confirmation) {
     if (password === confirmation) {
         return true;
     }
-    console.log('passwords did not match');
+    pubSub.publish(pubSub.TOPICS.SHOW_NOTIFICATION, '⚠️ Las contraseñas no coinciden');
     return false;
 }
