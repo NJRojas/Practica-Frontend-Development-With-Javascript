@@ -3,6 +3,7 @@ import { buildGreeting } from './userActionsView.js'
 
 export function userActionsController(userActionsElement) {
     const token = localStorage.getItem('token');
+    const createAdElement = userActionsElement.querySelector('#createAdLink');
     const closeSessionElement = userActionsElement.querySelector('#closeSession');
 
     if (token) {
@@ -23,6 +24,7 @@ export function userActionsController(userActionsElement) {
         });
 
     } else {
+        createAdElement.remove();
         closeSessionElement.remove();
 
     }

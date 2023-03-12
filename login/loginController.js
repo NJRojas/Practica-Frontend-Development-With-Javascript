@@ -1,4 +1,4 @@
-import { isEmailValid } from "../validation/validationForm.js"
+import { isEmailValid } from "../validation/formValidation.js"
 import { loginUser } from "./loginService.js";
 import { pubSub } from "../pubSub.js";
 

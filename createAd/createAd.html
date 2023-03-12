@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/adform.css">
+    <link rel="stylesheet" href="../styles/spinner.css">
+    <title>QuantumPop - Nuevo Anuncio</title>
+</head>
+
+<body>
+    <h2>Nuevo anuncio</h2>
+    <div class="container">
+        <form id="createAdForm">
+            <div class="row">
+                <div class="col-8">
+                    <label for="onSale">Vendo</label>
+                </div>
+                <div class="col-5">
+                    <input type="radio" id="onSale" name="onSale" value="onSale" checked>
+                </div>
+                <div class="col-8">
+                    <label for="wanted">Busco</label>
+                </div>
+                <div class="col-5">
+                    <input type="radio" id="wanted" name="onSale" value="wanted">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="articleName">Articulo</label>
+                </div>
+                <div class="col-80">
+                    <input type="text" id="articleName" name="articleName" placeholder="Nombre del articulo.." minlength="3" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="description">Descripción</label>
+                </div>
+                <div class="col-80">
+                    <textarea id="description" name="description" placeholder="Describe el articulo.."  style="height:200px"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="price">Precio</label>
+                </div>
+                <div class="col-10">
+                    <input type="number" id="price" name="price" placeholder="100" required>
+                </div>
+                <div class="col-5">
+                    <label for="">EUR</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-20">
+                    <label for="imageUrl">Foto</label>
+                </div>
+                <div class="col-80">
+                    <input type="url" id="imageUrl" name="imageUrl" placeholder="https://image.com" required>
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" id="submitButton"  value="Enviar">
+            </div>
+        </form>
+    </div>
+    <section class="notifications"></section>
+    <div class="spinner"></div>
+    <script type="module" src="./index.js"></script>
+</body>
+
+</html>
