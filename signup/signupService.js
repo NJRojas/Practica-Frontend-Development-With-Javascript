@@ -1,13 +1,13 @@
 /**
- * It creates a new user by sending POST request
- * Returns error or 200 status code ok with the new user object
+ * It creates a new user by sending POST request to `/auth/register`.
  * 
- * @param {String} username String reresenting username,
- * @param {String} password string p
+ * @param {String} username String email string to be set as username.
+ * @param {String} password string password string for new user.
+ * @returns 200 status code ok with the new user object, throws error otherwise
  */
 export async function createUser(username, password) {
     // Create user object acc. to `/auth/register` api
-    const user = {
+    const newUser = {
         username: username,
         password: password
     }
@@ -15,7 +15,7 @@ export async function createUser(username, password) {
     // POST new user request
     const response = await fetch('http://localhost:8000/auth/register', {
         method: 'POST',
-        body: JSON.stringify(user),
+        body: JSON.stringify(newUser),
         headers: {
             "Content-Type": "application/json"
         }

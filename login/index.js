@@ -1,9 +1,9 @@
-import { signupController } from "./signupController.js";
+import { loginController } from "./loginController.js";
 import { notificationController } from "../notifications/notificationController.js"
 
 const notificationsElement = document.querySelector('.notifications');
 notificationController(notificationsElement);
 
-const signupElement = document.querySelector('#signupForm');
+const loginElement = document.querySelector('#loginForm');
 const spinnerElement = document.querySelector('.spinner');
-signupController(signupElement, spinnerElement);
+loginController(loginElement, spinnerElement);

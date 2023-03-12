@@ -4,7 +4,8 @@ import { pubSub } from "../pubSub.js";
 
 /**
  * Handles logic for creating new users.
- * @param {*} signupElement a html node with sign up data embedded.
+ * @param {Element} signupElement 
+ * @param {Element} spinnerElement 
  */
 export function signupController(signupElement, spinnerElement) {
 
@@ -35,12 +36,13 @@ export function signupController(signupElement, spinnerElement) {
                 spinnerElement.style.visibility = 'hidden';
             }
         } 
-
     })
 }
 
 /**
- * Validates wheter give email 
+ * Local validation for entered remail
+ * it verifies that email string is well formatted
+ * in case is not broadcast warning message. 
  * @param {String} email 
  * @returns true if email is well formatted, otherwise false.
  */
@@ -54,11 +56,13 @@ function isEmailValid(email) {
 }
 
 /**
- * Returns true if both given string parameters are equal
- * otherwise broadcast error message
- *  
+ * Local validation for entered password
+ * It compares the two given string parameters,
+ * in case is not valid broadcast warning message.
+ * 
  * @param {String} password 
  * @param {string} confirmation 
+ * @returns true if both given string parameters are equal, otherwise false.
  */
 function isPasswordValid(password, confirmation) {
 
