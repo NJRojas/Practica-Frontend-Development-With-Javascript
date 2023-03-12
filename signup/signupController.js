@@ -6,7 +6,7 @@ import { pubSub } from "../pubSub.js";
  * Handles logic for creating new users.
  * @param {*} signupElement a html node with sign up data embedded.
  */
-export function signupController(signupElement) {
+export function signupController(signupElement, spinnerElement) {
 
     signupElement.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -22,6 +22,7 @@ export function signupController(signupElement) {
 
         if (isEmailValid(email) && isPasswordValid(password, passwordConfirmation)) {
             submitButton.disabled = true;
+            spinnerElement.style.visibility = 'visible';
             try {
                 await createUser(email, password);
                 signupElement.reset();
@@ -31,6 +32,7 @@ export function signupController(signupElement) {
                 pubSub.publish(pubSub.TOPICS.SHOW_NOTIFICATION, `❌ ${error.message}`);
             } finally {
                 submitButton.disabled = false;
+                spinnerElement.style.visibility = 'hidden';
             }
         } 
 

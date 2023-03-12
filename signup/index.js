@@ -5,4 +5,5 @@ const notificationsElement = document.querySelector('.notifications');
 notificationController(notificationsElement);
 
 const signupElement = document.querySelector('#signupForm');
-signupController(signupElement);
+const spinnerElement = document.querySelector('#loader');
+signupController(signupElement, spinnerElement);
