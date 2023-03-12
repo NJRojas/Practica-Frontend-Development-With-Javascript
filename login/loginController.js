@@ -1,9 +1,9 @@
-import { validateEmail } from "../utils/validator.js";
+import { isEmailValid } from "../validation/validationForm.js"
 import { loginUser } from "./loginService.js";
 import { pubSub } from "../pubSub.js";
 
 /**
- * 
+ * Validates and trigger usere login call
  * @param {Element} loginElement 
  * @param {Element} spinnerElement 
  */
@@ -18,11 +18,12 @@ export function loginController(loginElement, spinnerElement) {
         const submitButton = loginElement.querySelector('#submitButton');
 
         if (isEmailValid(email)) {
+            showLoadingState(submitButton, spinnerElement);
 
             try {
-                showLoadingState(submitButton, spinnerElement);
                 const token = await loginUser(email, password);
                 localStorage.setItem('token', token);
+                loginElement.reset();
                 alert(`✅ Bienvenido ${email}`);
                 window.location = '/';
             } catch (error) {
@@ -34,22 +35,9 @@ export function loginController(loginElement, spinnerElement) {
     })
 }
 
-/**
- * Validates wheher give email 
- * @param {String} email 
- * @returns true if email is well formatted, otherwise false.
- */
-function isEmailValid(email) {
-    if (validateEmail(email)) {
-        return true;
-    }
-    pubSub.publish(pubSub.TOPICS.SHOW_NOTIFICATION, '⚠️ El email ingresado no corresponde a un email');
-    return false;
-}
-
 function showLoadingState(submitButton, spinner) {
     submitButton.disabled = true;
-    spinner.style.visibility = 'visisble';
+    spinner.style.visibility = 'visible';
 }
 
 function hideLoadingState(submitButton, spinner) {
