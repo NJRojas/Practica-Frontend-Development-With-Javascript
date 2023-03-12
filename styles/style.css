@@ -1,0 +1,24 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding: 0px 0px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  
+  a {
+    color: #00B7FF;
+  }
+  
+  h1, h2 {
+    text-align: center;
+  }  
+
+  /* Style the header */
+header {
+    background-color: #D5EDF7;
+    text-align: center;
+    font-size: 35px;
+    color: #839095;
+  }

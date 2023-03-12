@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/styles/style.css'/>
+    <link rel="stylesheet" href="/styles/navbar.css">
     <title>QuantumPop</title>
 </head>
 <body>
-    <h1>Quantumpop</h1>
-    <section class="userActions">
-        <a href="./signup/signup.html" id="signupLink">Sign up</a>
-        <a href="./login/login.html" id="loginLink">Login</a>
-        </section>
+    <header>
+        <h1>Quantumpop</h1> 
+    </header>
+    <ul class="userActions">
+        <li><a href="./signup/signup.html" id="signupLink">Sign up</a></li>
+        <li><a href="./login/login.html" id="loginLink">Login</a></li>
+        <li><button id="closeSession">Cerrar sesión</button></li>
+    </ul>
     <section class="notifications"></section>
+    
     <script type="module" src="./index.js"></script>
 </body>
 </html>
