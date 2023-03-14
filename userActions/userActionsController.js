@@ -1,7 +1,7 @@
 import { decodedToken } from '../utils/decodedToken.js'
 import { buildGreeting } from './userActionsView.js'
 
-export function userActionsController(userActionsElement) {
+export function userActionsController(userActionsElement, greetingElement) {
     const token = localStorage.getItem('token');
     const createAdElement = userActionsElement.querySelector('#createAdLink');
     const closeSessionElement = userActionsElement.querySelector('#closeSession');
@@ -16,7 +16,7 @@ export function userActionsController(userActionsElement) {
 
         const payload = decodedToken(token);
         const userGreetingElement = buildGreeting(payload.username);
-        userActionsElement.appendChild(userGreetingElement);
+        greetingElement.appendChild(userGreetingElement);
 
         closeSessionElement.addEventListener('click', () => {
             localStorage.removeItem('token');

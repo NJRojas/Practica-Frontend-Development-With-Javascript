@@ -5,4 +5,5 @@ const notificationsElement = document.querySelector('.notifications');
 notificationController(notificationsElement);
 
 const userActionsElement = document.querySelector('.userActions');
-userActionsController(userActionsElement);
+const greetingElement = document.querySelector('.greeting');
+userActionsController(userActionsElement, greetingElement);

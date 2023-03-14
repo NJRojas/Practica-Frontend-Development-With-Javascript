@@ -23,5 +23,17 @@ ul {
   }
 
   ul button {
-    vertical-align: middle;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    color: white;
+    padding: 14px 16px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .greeting p {
+    float: right;
+    color: #85898a;
+    padding: 14px 16px;
   }
