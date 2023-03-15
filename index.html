@@ -4,23 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/styles/style.css'/>
-    <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel='stylesheet' href='./styles/style.css'/>
+    <link rel="stylesheet" href="./styles/navbar.css">
+    <link rel="stylesheet" href="./styles/adsListStyle.css">
+    <link rel="stylesheet" href="./styles/spinner.css">
     <title>QuantumPop</title>
 </head>
 <body>
-    <header>
-        <h1>Quantumpop</h1> 
-    </header>
+    <div class="headerContainer">
+        <div class="column">
+            <h1 class="pageTitle">Quantumpop</h1>
+        </div>
+        <div class="greeting"></div>
+    </div>
     <ul class="userActions">
         <li><a href="./signup/signup.html" id="signupLink">Sign up</a></li>
         <li><a href="./login/login.html" id="loginLink">Login</a></li>
-        <li><a href="./createAd/createAd.html" id="createAdLink">crear anuncio</a></li>
-        <li><button id="closeSession">cerrar sesión</button></li>
+        <li><a href="./createAd/createAd.html" id="createAdLink">Crear anuncio</a></li>
+        <li><button id="closeSession">Cerrar sesión</button></li>
     </ul>
-    <div class=" greeting"></div>
     <section class="notifications"></section>
-    
+    <div class="spinnerContainer">
+        <div class="spinner"></div>
+        <p>Cargando anuncios...</p>
+    </div>
+    <section class="adsListContainer"></section>
+
     <script type="module" src="./index.js"></script>
 </body>
 </html>

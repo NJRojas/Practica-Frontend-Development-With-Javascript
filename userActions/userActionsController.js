@@ -26,6 +26,5 @@ export function userActionsController(userActionsElement, greetingElement) {
     } else {
         createAdElement.remove();
         closeSessionElement.remove();
-
     }
 }

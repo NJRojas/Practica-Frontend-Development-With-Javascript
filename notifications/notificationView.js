@@ -5,5 +5,7 @@
  * @returns Returns a html paragraph.
  */
 export function buildNotificationView(message) {
-    return `<p>${message}</p>`;
+    return `<div class="messageContainer">
+                <p>${message}</p>
+    </div>`;
 }

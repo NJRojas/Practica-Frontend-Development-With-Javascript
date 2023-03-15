@@ -1,9 +1,5 @@
 export const createAd = async (ad) => {
 
-    const newAd = {
-        content: ad
-    };
-
     const token = localStorage.getItem('token');
 
     const response = await fetch('http://localhost:8000/api/ads', {
@@ -12,7 +8,7 @@ export const createAd = async (ad) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify(newAd)
+        body: JSON.stringify(ad)
     });
 
     if (!response.ok) {
