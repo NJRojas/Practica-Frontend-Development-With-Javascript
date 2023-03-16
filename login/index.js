@@ -5,5 +5,5 @@ const notificationsElement = document.querySelector('.notifications');
 notificationController(notificationsElement);
 
 const loginElement = document.querySelector('#loginForm');
-const spinnerElement = document.querySelector('.spinner');
+const spinnerElement = document.querySelector('.spinnerContainer');
 loginController(loginElement, spinnerElement);

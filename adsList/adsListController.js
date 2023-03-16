@@ -1,24 +1,24 @@
 import { getAdsList } from "./adsService.js";
-import { buildAdView, buildEmptyListMessage } from "./adsView.js";
+import { buildAdView, buildEmptyListMessage, buildSpinner } from "./adsView.js";
 import { pubSub } from "../pubSub.js"
 
-export async function adListController(adsListElement, spinnerElement) {
+export async function adListController(adsListElement) {
 
-    adsListElement.innerHTML = '';
-    spinnerElement.style.display = 'block';
+    adsListElement.innerHTML = buildSpinner();
     try {
         const ads = await getAdsList();
-        spinnerElement.style.display = 'none';
+       
         drawResults(ads, adsListElement);
 
     } catch (error) {
-        spinnerElement.style.display = 'none';
+        adsListElement.innerHTML = '';
         pubSub.publish(pubSub.TOPICS.SHOW_NOTIFICATION, `❌ ${error.message}`);
     }
 }
 
 function drawResults(ads, adsListElement) {
 
+    adsListElement.innerHTML = '';
     if (ads.length > 0) {
         ads.forEach(ad => {
             const newAd = buildAdView(ad);

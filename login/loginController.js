@@ -15,10 +15,9 @@ export function loginController(loginElement, spinnerElement) {
         const formData = new FormData(loginElement);
         const email = formData.get('username');
         const password = formData.get('password');
-        const submitButton = loginElement.querySelector('#submitButton');
 
         if (isEmailValid(email)) {
-            showLoadingState(submitButton, spinnerElement);
+            showLoadingState(loginElement, spinnerElement);
 
             try {
                 const token = await loginUser(email, password);
@@ -29,18 +28,18 @@ export function loginController(loginElement, spinnerElement) {
             } catch (error) {
                 pubSub.publish(pubSub.TOPICS.SHOW_NOTIFICATION, `❌ ${error.message}`);
             } finally {
-                hideLoadingState(submitButton, spinnerElement);
+                hideLoadingState(loginElement, spinnerElement);
             }
         }
     })
 }
 
-function showLoadingState(submitButton, spinner) {
-    submitButton.disabled = true;
-    spinner.style.visibility = 'visible';
+function showLoadingState(form, spinner) {
+    form.style.display = 'none';
+    spinner.style.display = 'block';
 }
 
-function hideLoadingState(submitButton, spinner) {
-    submitButton.disabled = false;
-    spinner.style.visibility = 'hidden';
+function hideLoadingState(form, spinner) {
+    form.style.display = 'grid';
+    spinner.style.display = 'none';
 }

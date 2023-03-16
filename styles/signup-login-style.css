@@ -1,3 +1,7 @@
+:root {
+    --text-color: #839095;
+  }
+  
 body {
     padding: 0px 20px 0px 20px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -9,6 +13,15 @@ body {
     min-height    : 100vh;
 }
 
-h2 {
-    color: #839095;
+.spinnerContainer p, h2, label {
+    color: var(--text-color);
+}
+
+.spinnerContainer {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    align-items: center;
 }

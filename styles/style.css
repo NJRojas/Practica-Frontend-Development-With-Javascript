@@ -1,6 +1,9 @@
+:root {
+  --text-color: #839095;
+}
+
 * {
   box-sizing: border-box;
-  --text-color: #839095;
 }
 
 body {
@@ -36,7 +39,7 @@ a {
 }
 
 .spinnerContainer {
-  display: none;
+  display: block;
   position: absolute;
   left: 50%;
   top: 50%;

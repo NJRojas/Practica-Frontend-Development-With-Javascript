@@ -10,5 +10,4 @@ const greetingElement = document.querySelector('.greeting');
 userActionsController(userActionsElement, greetingElement);
 
 const adsListElement = document.querySelector('.adsListContainer');
-const spinnerElement = document.querySelector('.spinnerContainer');
-adListController(adsListElement, spinnerElement);
+adListController(adsListElement);

@@ -36,3 +36,13 @@ export function buildEmptyListMessage() {
             </div>
     `;
 }
+
+export function buildSpinner() {
+    return `<div class="spinnerContainer">
+                <div class="spinner"></div>
+                <div>
+                    <p>Cargando anuncios...</p>
+                </div>
+            </div>
+    `;
+}

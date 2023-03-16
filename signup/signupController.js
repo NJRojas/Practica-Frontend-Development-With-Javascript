@@ -1,5 +1,5 @@
 import { createUser } from "./signupService.js";
-import { isEmailValid, isPasswordValid } from "../validation/validationForm.js"
+import { isEmailValid, isPasswordValid } from "../validation/formValidation.js"
 import { pubSub } from "../pubSub.js";
 
 /**
@@ -16,12 +16,11 @@ export function signupController(signupElement, spinnerElement) {
         const email = formData.get('username');
         const password = formData.get('password');
         const passwordConfirmation = formData.get('passwordConfirm');
-        const submitButton = signupElement.querySelector('#submitButton');
 
         if (isEmailValid(email) && isPasswordValid(password, passwordConfirmation)) {
             
             try {
-                showLoadingState(submitButton, spinnerElement);
+                showLoadingState(signupElement, spinnerElement);
                 await createUser(email, password);
                 signupElement.reset();
                 alert(`✅ Usuario ${email} ha sido creado`);
@@ -29,18 +28,18 @@ export function signupController(signupElement, spinnerElement) {
             } catch (error) {
                 pubSub.publish(pubSub.TOPICS.SHOW_NOTIFICATION, `❌ ${error.message}`);
             } finally {
-                hideLoadingState(submitButton, spinnerElement);
+                hideLoadingState(signupElement, spinnerElement);
             }
         } 
     })
 }
 
-function showLoadingState(submitButton, spinner) {
-    submitButton.disabled = true;
-    spinner.style.visibility = 'visible';
+function showLoadingState(form, spinner) {
+    form.style.display = 'none';
+    spinner.style.display = 'block';
 }
 
-function hideLoadingState(submitButton, spinner) {
-    submitButton.disabled = false;
-    spinner.style.visibility = 'hidden';
+function hideLoadingState(form, spinner) {
+    form.style.display = 'grid';
+    spinner.style.display = 'none';
 }
