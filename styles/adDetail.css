@@ -1,25 +1,37 @@
 :root {
     --curve: 20;
+    --text-color: #839095;
 }
 
-.adsListContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 4rem 5vw;
-    padding: 0;
-    list-style-type: none;
-}  
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0px 20px 0px 20px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #D5EDF7;
+}
+
+h1, .spinnerContainer p {
+    color: var(--text-color);
+}
+
+.adDetailContainer, .notifications {
+    margin        : 0;
+    padding       : 0;
+    display       : grid;
+    place-content : center;
+}
 
 .adCard {
     position: relative;
     display: block;
-    height: 430px;  
     background-color: #f2f2f2;
     border-radius: calc(var(--curve) * 1px);
     overflow: hidden;
     text-decoration: none;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -2px rgba(0,0,0,.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1), 0 2px 4px -2px rgba(0, 0, 0, .1);
 }
 
 .adCard img {
@@ -60,10 +72,10 @@
     margin-left: 0.5rem;
 }
 
-.cardLink {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+#deleteAd {
+    background-color: transparent;
+    border: none;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
 }

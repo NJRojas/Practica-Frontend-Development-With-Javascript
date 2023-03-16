@@ -1,5 +1,5 @@
 import { getAdsList } from "./adsService.js";
-import { buildAdView, buildEmptyListMessage, buildSpinner } from "./adsView.js";
+import { buildAdView, buildEmptyListMessage, buildSpinner } from "./adView.js";
 import { pubSub } from "../pubSub.js"
 
 export async function adListController(adsListElement) {

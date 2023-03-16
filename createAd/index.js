@@ -5,5 +5,5 @@ const notificationsElement = document.querySelector('.notifications');
 notificationController(notificationsElement);
 
 const createAdElement = document.querySelector('#createAdForm');
-const spinnerElement = document.querySelector('.spinner');
+const spinnerElement = document.querySelector('.spinnerContainer');
 createAdController(createAdElement, spinnerElement);

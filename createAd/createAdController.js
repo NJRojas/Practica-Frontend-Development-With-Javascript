@@ -6,12 +6,11 @@ export const createAdController = async (createAdElement, spinnerElement) => {
 
     createAdElement.addEventListener('submit', async (event) => {
         event.preventDefault();
+
         const ad = creteAdFrom(createAdElement);
+
         if (typeof ad != 'undefined') {
-
-            const submitButton = createAdElement.querySelector('#submitButton');
-            showLoadingState(submitButton, spinnerElement);
-
+            showLoadingState(createAdElement, spinnerElement);
             try {
                 await createAd(ad);
                 alert(`✅  Tu anuncio fue dado de alta éxitosamente`);
@@ -19,7 +18,7 @@ export const createAdController = async (createAdElement, spinnerElement) => {
             } catch (error) {
                 pubSub.publish(pubSub.TOPICS.SHOW_NOTIFICATION, `❌ ${error.message}`);
             } finally {
-                hideLoadingState(submitButton, spinnerElement);
+                hideLoadingState(createAdElement, spinnerElement);
             }
         }
         
@@ -45,18 +44,16 @@ function creteAdFrom(createAdElement) {
         onSale: onSale,
         price: price,
         imageURL: imageURL
-    }
-    
+    };
     return adObject;
 }
 
-function showLoadingState(submitButton, spinner) {
-    submitButton.disabled = true;
-    spinner.style.visibility = 'visible';
-    debugger;
+function showLoadingState(form, spinner) {
+    form.style.display = 'none';
+    spinner.style.display = 'block';
 }
 
-function hideLoadingState(submitButton, spinner) {
-    submitButton.disabled = false;
-    spinner.style.visibility = 'hidden';
+function hideLoadingState(form, spinner) {
+    form.style.display = 'grid';
+    spinner.style.display = 'none';
 }

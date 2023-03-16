@@ -5,21 +5,18 @@ export function buildAdView(ad) {
     const type = ad.onSale ? 'Se vende' : 'Se busca';
     adElement.innerHTML = `
         <div class="adCard">
+            <a class="cardLink" href="../adDetail/adDetail.html?adId=${ad.id}"></a>
             <img src="${ad.imageURL}"/>
-            <div class="cardHeader">
-                
-            </dv>
             <div class="cardAdInfo">
                 <p class="cardTitle">${ad.articleName}</p>
                 <p>${ad.description}</p>
             </div>
             <div class="cardFooter">
-                <p class="cardPriceText">${ad.price} €</p>
+                <p>${ad.price} €</p>
                 <p>${type}</p>
             </div>
         </div>
     `;
-
     return adElement;
 }
 
