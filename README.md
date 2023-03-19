@@ -9,3 +9,7 @@
 - run `npm install`
 - then `npm start`
 
+### Test user
+
+- user: vivesanodigital@gmail.com
+- password: 121212
